@@ -1,0 +1,256 @@
+/* =========================================================
+   PROJECTS — SELECTED WORK
+   ========================================================= */
+.work {
+  padding-block: var(--sp-section);
+  border-top: 1px solid var(--c-line);
+}
+
+.work__head {
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  max-width: 46ch;
+}
+
+.work__heading {
+  font-size: var(--fs-h1);
+  margin-top: 1rem;
+}
+
+.work__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-md);
+  background: var(--c-base);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.project-card:hover {
+  border-color: var(--c-ink);
+  box-shadow: 0 20px 50px -25px rgba(19, 18, 23, 0.25);
+}
+
+.project-card__visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--c-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card__visual-tag {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  color: rgba(250, 250, 248, 0.5);
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.project-card__mark {
+  font-family: var(--f-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: rgba(250, 250, 248, 0.9);
+  letter-spacing: -0.02em;
+}
+
+/* J-Square treatment: architectural grid pattern */
+.project-card__visual--grid {
+  background:
+    linear-gradient(rgba(110,51,255,0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110,51,255,0.14) 1px, transparent 1px),
+    var(--c-ink);
+  background-size: 28px 28px;
+}
+
+/* AI Question Paper Generator treatment: soft data-flow dot field */
+.project-card__visual--ai {
+  background-image: radial-gradient(rgba(110,51,255,0.35) 1.4px, transparent 1.4px);
+  background-size: 20px 20px;
+  background-color: var(--c-ink);
+}
+.project-card__visual--ai::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(110,51,255,0.35), transparent 70%);
+  animation: aiPulse 4s ease-in-out infinite;
+}
+@keyframes aiPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.06); }
+}
+
+.project-card__body { display: flex; flex-direction: column; gap: 1rem; }
+
+.project-card__tag {
+  font-family: var(--f-mono);
+  font-size: var(--fs-mono);
+  color: var(--c-accent);
+}
+
+.project-card__title {
+  font-family: var(--f-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+}
+
+.project-card__summary {
+  color: var(--c-muted);
+  max-width: 46ch;
+  font-size: 0.98rem;
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.project-card__tech span {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  padding: 0.4em 0.75em;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  color: var(--c-ink-soft);
+}
+
+.project-card__cta {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--f-mono);
+  font-size: var(--fs-mono);
+}
+.project-card__cta .arrow { transition: transform var(--dur-fast) var(--ease-out); }
+.project-card:hover .project-card__cta .arrow { transform: translate(4px, -4px); }
+
+@media (max-width: 800px) {
+  .project-card { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   PROJECT DETAIL — cinematic full-screen view
+   ========================================================= */
+.project-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: var(--c-base);
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+}
+.project-detail.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.project-detail__close {
+  position: fixed;
+  top: clamp(1.25rem, 3vw, 2rem);
+  right: clamp(1.25rem, 3vw, 2rem);
+  z-index: 810;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--f-mono);
+  font-size: var(--fs-mono);
+  padding: 0.7em 1.1em;
+  border: 1px solid var(--c-ink);
+  border-radius: 999px;
+  background: var(--c-base);
+}
+
+.project-detail__hero {
+  position: relative;
+  aspect-ratio: 16/7;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.project-detail__inner {
+  padding: clamp(5.5rem, 10vw, 8rem) var(--sp-gutter) var(--sp-section);
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.project-detail__eyebrow { display: block; margin-bottom: 1rem; }
+
+.project-detail__title {
+  font-family: var(--f-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.98;
+}
+
+.project-detail__subtitle {
+  margin-top: 0.75rem;
+  color: var(--c-muted);
+  font-family: var(--f-mono);
+  font-size: var(--fs-mono);
+}
+
+.project-detail__meta {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2rem) 0;
+  border-top: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--c-line);
+}
+.project-detail__meta dt {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  color: var(--c-muted);
+  margin-bottom: 0.4rem;
+}
+.project-detail__meta dd { font-family: var(--f-display); font-size: 1.05rem; }
+
+.project-detail__section {
+  margin-top: clamp(3rem, 7vw, 5rem);
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.project-detail__section h3 {
+  font-family: var(--f-mono);
+  font-size: var(--fs-mono);
+  color: var(--c-accent);
+}
+.project-detail__section p, .project-detail__section li {
+  font-size: var(--fs-body-lg);
+  color: var(--c-ink-soft);
+  max-width: 60ch;
+}
+.project-detail__section ul { display: flex; flex-direction: column; gap: 0.6rem; }
+.project-detail__section li { position: relative; padding-left: 1.4em; }
+.project-detail__section li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--c-accent);
+}
+
+@media (max-width: 700px) {
+  .project-detail__meta { grid-template-columns: 1fr; }
+  .project-detail__section { grid-template-columns: 1fr; }
+}
+
+.project-detail__live {
+  margin-top: clamp(3rem, 6vw, 4rem);
+}

@@ -1,0 +1,180 @@
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.about {
+  padding-block: var(--sp-section);
+  border-top: 1px solid var(--c-line);
+}
+
+.about__head { margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+
+.about__heading {
+  font-size: var(--fs-h1);
+  max-width: 22ch;
+  margin-top: 1rem;
+}
+
+.about__word {
+  display: inline-block;
+  overflow: hidden;
+}
+.about__word span {
+  display: inline-block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+.about__grid { display: block; }
+
+.about__body {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.about__copy {
+  font-size: var(--fs-body-lg);
+  color: var(--c-ink-soft);
+  max-width: 42ch;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.about__focus {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.about__focus li {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--c-line);
+  opacity: 0;
+  transform: translateY(24px);
+}
+.about__focus li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.about__focus-mark {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.about__focus p {
+  color: var(--c-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .about__body { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   SKILLS
+   ========================================================= */
+.skills {
+  padding-block: var(--sp-section);
+  border-top: 1px solid var(--c-line);
+}
+
+.skills__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.skills__heading {
+  font-size: var(--fs-h1);
+  margin-top: 1rem;
+  max-width: 16ch;
+}
+
+.skills__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--c-line);
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.skills__tab {
+  padding: 0.6em 1.1em;
+  font-family: var(--f-mono);
+  font-size: var(--fs-mono);
+  border-radius: 999px;
+  border: 1px solid var(--c-line);
+  color: var(--c-muted);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+.skills__tab:hover { border-color: var(--c-ink); color: var(--c-ink); }
+.skills__tab.is-active {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+  color: var(--c-base);
+}
+
+.skills__panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  min-height: 3.5rem;
+}
+
+.skill-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85em 1.3em;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-sm);
+  font-family: var(--f-display);
+  font-size: 1rem;
+  background: var(--c-base-soft);
+  transition: transform var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+
+.skill-chip:hover {
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+
+.skill-chip__tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 6px);
+  white-space: nowrap;
+  background: var(--c-ink);
+  color: var(--c-base);
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  padding: 0.5em 0.8em;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.skill-chip__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--c-ink);
+}
+.skill-chip:hover .skill-chip__tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

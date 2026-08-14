@@ -1,0 +1,54 @@
+/* =========================================================
+   RESPONSIVE — tablet & mobile intentional adjustments
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .nav__links { gap: 1.25rem; font-size: 0.72rem; }
+  .hero__footer { flex-direction: column; align-items: flex-start; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 72px;
+    --nav-h-scrolled: 60px;
+  }
+
+  .nav__links { display: none; }
+  .nav__toggle { display: flex; }
+
+  .hero { padding-top: calc(var(--nav-h) + 1rem); min-height: 100dvh; }
+  .hero__copy { max-width: 100%; }
+  .hero__roles { flex-direction: column; gap: 0.6rem; }
+  .hero__glow { width: 100vw; height: 100vw; right: -30%; top: 5%; }
+
+  .btn { padding: 0.85em 1.3em; font-size: 0.75rem; }
+
+  .loader__bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .loader__bar-track { width: 100%; }
+
+  /* Certificates */
+  .cert-doc-grid { grid-template-columns: 1fr; }
+  .cert-category__inner { padding-inline: 1.25rem; }
+
+  /* Achievements */
+  .achievements__gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+
+  /* Freelance */
+  .freelance__track { padding-inline: 1.25rem; }
+
+  /* Contact */
+  .contact__ctas { flex-direction: column; align-items: stretch; }
+  .contact__ctas .btn { justify-content: center; }
+
+  /* Footer */
+  .footer__grid { align-items: flex-start; flex-direction: column; }
+  .footer__marquee-track { animation-duration: 14s; }
+
+  /* Lightbox nav sits closer to edges on small screens */
+  .lightbox__nav { width: 40px; height: 40px; }
+}
+
+/* No horizontal overflow, ever */
+html, body { max-width: 100%; }
